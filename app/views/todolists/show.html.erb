@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <p>
-  <strong>List title:</strong>
-  <%= @todolist.list_title %>
+  <h2><%= @todolist.list_title %></h2>
 </p>
 
 <p>
@@ -10,62 +11,55 @@
   <%= @todolist.description %>
 </p>
 
-<p>
-  <strong>List:</strong>
-  <%= @todolist.list_id %>
-</p>
-
-<p>
-  <strong>Num of todoitems:</strong>
-  <%= @todolist.num_of_todoitems %>
-</p>
-
-<%= link_to 'Edit', edit_todolist_path(@todolist) %> |
-<%= link_to 'Back', todolists_path %>
 
 
-<h2>Todos for : <%= @todolist.list_title %> </h2>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">  <%= @todolist.list_title %>
+  </div>
 
-<% @todolist.todoitems.each do |todoitem| %>
-    <p>
-      <strong>Item:</strong>
-      <%= todoitem.item %>
-    </p>
-    <p>
-      <strong>Comment</strong>
-      <%= todoitem.comment %>
-    </p>
-    <p>
-      <strong>Done: </strong>
-      <!--If statement??-->
-      <a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
-    </p>
+  <!-- Table -->
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Todo</th>
+      <th>Comment</th>
+      <th>Done</th>
+      <th>Delete</th>
+    </tr>
+    <% @todolist.todoitems.each do |todoitem| %>
+        <tr>
+          <td><strong><%= todoitem.id %></strong></td>
+          <td><%= todoitem.item %></td>
+          <td><%= todoitem.comment %></td>
+          <td>
+            <%= form_for ([@todolist, @todolist.todoitems.build]) do |f| %>
+              <%= f.check_box :done %>
+              <%= todoitem.done %></td>
+            <% end %>
 
+          <td>
+            <%= link_to('Delete', todoitem, :class => 'btn btn-large btn-danger', method: :delete, data: { confirm: 'Are you sure?' }) %>
+          </td>
 
-<% end %>
+        </tr>
 
-
-
-
-<h2>Add Todoitem : </h2>
-
-<%= form_for ([@todolist, @todolist.todoitems.build]) do |f| %>
-
-    <p>
-      <%= f.label :item %><br>
-      <%= f.text_field :item %>
-    </p>
-    <p>
-      <%= f.label :comment %><br>
-      <%= f.text_area :comment %>
-    </p>
-    <p>
-      <%= f.label :done %><br>
-      <%= f.check_box :done %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
+    <% end %>
+    <tr>
+      <%= form_for ([@todolist, @todolist.todoitems.build]) do |f| %>
+        <td><strong>New</strong></td>
+        <td><%= f.text_field :item %></td>
+        <td><%= f.text_field :comment %></td>
+        <td></td>
+        <td><%= f.submit %></td>
 
 
-<% end %>
+    <% end %>
+    </tr>
+  </table>
+</div>
+
+
+<%= link_to('Edit', edit_todolist_path(@todolist), :class => 'btn btn-large btn-warning') %>
+<%= link_to('Back', todolist_path, :class => 'btn btn-large btn-primary') %>
+

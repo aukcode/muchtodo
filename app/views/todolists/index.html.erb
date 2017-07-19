@@ -5,6 +5,9 @@
   }
     .jumbotron{
       padding: 10%;
+      background-color: #2E2F30;
+      color:white;
+      border-radius: 20px;
     }
 </style>
 
@@ -15,16 +18,18 @@
 
 <div class="container">
   <div class="page-header">
-    <h1>The muchtodo Todolistlist</h1>
+    <h1>The muchtodo Todolistlist       <%= link_to('New List', new_todolist_path , :class => 'btn btn-large btn-success') %>
+    </h1>
   </div>
 </div>
 
 
-<div class="row col-sm-offset-2 vertical-center">
+<div class="row vertical-center col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
 
   <% @todolists.each do |todolist| %>
 
-      <div class="col-sm-6">
+      <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10">
+        <div class="clearfix visible-sm"></div>
         <div class="jumbotron">
           <h2><%= todolist.list_title %></h2>
           <ol>
@@ -49,35 +54,5 @@
 </div>
 
 
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th>List title</th>
-      <th>Description</th>
-      <th>List</th>
-      <th>Num of todoitems</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @todolists.each do |todolist| %>
-      <tr>
-        <td><%= todolist.list_title %></td>
-        <td><%= todolist.description %></td>
-        <td><%= todolist.list_id %></td>
-        <td><%= todolist.num_of_todoitems %></td>
-        <td><%= link_to 'Show', todolist %></td>
-        <td><%= link_to 'Edit', edit_todolist_path(todolist) %></td>
-        <td><%= link_to 'Destroy', todolist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
 
-<%= link_to 'New Todolist', new_todolist_path %>
