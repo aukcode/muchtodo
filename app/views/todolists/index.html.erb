@@ -9,6 +9,19 @@
       color:white;
       border-radius: 20px;
     }
+
+    .whitespace {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+
+  .btn-xlarge {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width:50%;    //Specify your width here
+  }
+
 </style>
 
 
@@ -18,40 +31,40 @@
 
 <div class="container">
   <div class="page-header">
-    <h1>The muchtodo Todolistlist       <%= link_to('New List', new_todolist_path , :class => 'btn btn-large btn-success') %>
-    </h1>
+    <h1>The muchtodo Todolistlist</h1>
   </div>
 </div>
 
-
-<div class="row vertical-center col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-
-  <% @todolists.each do |todolist| %>
-
-      <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10">
-        <div class="clearfix visible-sm"></div>
-        <div class="jumbotron">
-          <h2><%= todolist.list_title %></h2>
-          <ol>
-          <% todolist.todoitems.each do |todoinctance| %>
-            <li><%= todoinctance.item %></li><br>
-          <% end %>
-          </ol>
-          <p>
-
-          <%= link_to('Show', todolist, :class => 'btn btn-large btn-primary') %>
-          <%= link_to('Edit', edit_todolist_path(todolist), :class => 'btn btn-large btn-default') %>
-          <%= link_to('Delete', todolist, :class => 'btn btn-large btn-danger', method: :delete, data: { confirm: 'Are you sure?' }) %>
+<div class="row vertical-center">
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+    <div style="float: right"><%= link_to('New List', new_todolist_path , :class => 'btn btn-lg btn-success') %></div>
+    <br>
+    <br>
+    <br>
 
 
-          </p>
-        </div>
+    <% @todolists.each do |todolist| %>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="jumbotron">
+            <h2><%= todolist.list_title %></h2>
+              <ol>
+                <% todolist.todoitems.each do |todoinctance| %>
+                  <li><%= todoinctance.item %></li><br>
+                <% end %>
+              </ol>
+
+            <p>
+              <%= link_to('Show', todolist, data: {no_turbolink: true }, :class => 'btn btn-large btn-primary') %>
+              <%= link_to('Edit', edit_todolist_path(todolist), :class => 'btn btn-large btn-default') %>
+              <%= link_to('Delete', todolist, :class => 'btn btn-large btn-danger', method: :delete, data: { confirm: 'Are you sure?' }) %>
+            </p>
+          </div>
       </div>
+    <% end %>
 
-  <% end %>
-
-
+  </div>
 </div>
+
 
 
 <br>
