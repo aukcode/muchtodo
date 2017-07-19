@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>List title:</strong>
+  <%= @todolist.list_title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @todolist.description %>
+</p>
+
+<p>
+  <strong>List:</strong>
+  <%= @todolist.list_id %>
+</p>
+
+<p>
+  <strong>Num of todoitems:</strong>
+  <%= @todolist.num_of_todoitems %>
+</p>
+
+<%= link_to 'Edit', edit_todolist_path(@todolist) %> |
+<%= link_to 'Back', todolists_path %>
+
+<h2>Add Todoitem : </h2>
+
+<%= form_for ([@todolist, @todolist.todoitems.build]) do |f| %>
+
+    <p>
+      <%= f.label :item %><br>
+      <%= f.text_field :item %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+
+
+<% end %>

@@ -1,0 +1,34 @@
+<%= form_for(@todolist) do |f| %>
+  <% if @todolist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@todolist.errors.count, "error") %> prohibited this todolist from being saved:</h2>
+
+      <ul>
+      <% @todolist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :list_title %><br>
+    <%= f.text_field :list_title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :list_id %><br>
+    <%= f.number_field :list_id %>
+  </div>
+  <div class="field">
+    <%= f.label :num_of_todoitems %><br>
+    <%= f.number_field :num_of_todoitems %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

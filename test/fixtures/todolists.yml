@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  list_title: MyString
+  description: MyText
+  list_id: 1
+  num_of_todoitems: 1
+
+two:
+  list_title: MyString
+  description: MyText
+  list_id: 1
+  num_of_todoitems: 1
