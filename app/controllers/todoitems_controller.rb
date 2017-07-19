@@ -11,6 +11,6 @@ class TodoitemsController < ApplicationController
   # The following can be passed in .create(comment_params) up above
   private
   def todoitem_params
-    params.require(:todoitem).permit(:item, :comment)
+    params.require(:todoitem).permit(:item, :comment, :done)
   end
 end

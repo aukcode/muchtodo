@@ -4,7 +4,7 @@ class TodolistsController < ApplicationController
   # GET /todolists
   # GET /todolists.json
   def index
-    @todolists = Todolistx.all
+    @todolists = Todolist.all
   end
 
   # GET /todolists/1

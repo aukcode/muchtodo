@@ -23,6 +23,30 @@
 <%= link_to 'Edit', edit_todolist_path(@todolist) %> |
 <%= link_to 'Back', todolists_path %>
 
+
+<h2>Todos for : <%= @todolist.list_title %> </h2>
+
+<% @todolist.todoitems.each do |todoitem| %>
+    <p>
+      <strong>Item:</strong>
+      <%= todoitem.item %>
+    </p>
+    <p>
+      <strong>Comment</strong>
+      <%= todoitem.comment %>
+    </p>
+    <p>
+      <strong>Done: </strong>
+      <!--If statement??-->
+      <a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
+    </p>
+
+
+<% end %>
+
+
+
+
 <h2>Add Todoitem : </h2>
 
 <%= form_for ([@todolist, @todolist.todoitems.build]) do |f| %>
@@ -30,6 +54,14 @@
     <p>
       <%= f.label :item %><br>
       <%= f.text_field :item %>
+    </p>
+    <p>
+      <%= f.label :comment %><br>
+      <%= f.text_area :comment %>
+    </p>
+    <p>
+      <%= f.label :done %><br>
+      <%= f.check_box :done %>
     </p>
     <p>
       <%= f.submit %>
