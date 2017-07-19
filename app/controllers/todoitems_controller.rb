@@ -6,9 +6,11 @@ class TodoitemsController < ApplicationController
 
     redirect_to todolist_path(@todolist)
   end
-  #
-  # private
-  # def comment_params
-  #   params.require(:comment).permit(:commenter, :body)
-  # end
+
+
+  # The following can be passed in .create(comment_params) up above
+  private
+  def todoitem_params
+    params.require(:todoitem).permit(:item, :comment)
+  end
 end
