@@ -9,6 +9,16 @@ class TodoitemsController < ApplicationController
 
 
 
+  def destroy
+    @todoitem.destroy
+    respond_to do |format|
+      format.html { redirect_to todolists_url, notice: 'Todolist was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+
+
   # The following can be passed in .create(comment_params) up above
   private
   def todoitem_params

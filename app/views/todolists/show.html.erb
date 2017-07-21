@@ -36,13 +36,15 @@
             <%= form_for([@todolist, @todolist.todoitems.build]) do |f| %>
               <%= check_box("tag", todoitem.id, {checked: todoitem.done}) %>
             <% end %>
+            <p><%= todoitem.done %></p>
           </td>
-          <td>X</td>
+          <td> <%= link_to 'Destroy', todoitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
-
     <% end %>
   </table>
 </div>
+
+<!--link_to destroy is fucking up. assets, application_controller, models, helpers, models and routes has nothing. hints in rake routes-->
 
 
       <%= form_for([@todolist, @todolist.todoitems.build]) do |f| %>
@@ -65,3 +67,27 @@
 <%= link_to('Edit', edit_todolist_path(@todolist), :class => 'btn btn-large btn-warning') %>
 <%= link_to('Back', root_path, :class => 'btn btn-large btn-primary') %>
 
+<script>
+
+
+//    var $boxes = $('input[name="tag_23"]:checked');
+//    console.log($boxes);
+
+//    $(document).ready(function () {
+//    if(document.getElementById('tag_23').checked) {
+//        $("p").show();
+//    } else {
+//        $("p").hide();
+//    }
+//  });
+
+//    $(document).ready(function(){
+//        $("p").click(function(){
+//            $(this).hide();
+//        });
+//    });
+
+    console.log("Heii");
+
+
+</script>

@@ -54,7 +54,7 @@
               </ol>
 
             <p>
-              <%= link_to('Show', todolist, data: {no_turbolink: true }, :class => 'btn btn-large btn-primary') %>
+              <%= link_to('Show', todolist, :class => 'btn btn-large btn-primary') %>
               <%= link_to('Edit', edit_todolist_path(todolist), :class => 'btn btn-large btn-default') %>
               <%= link_to('Delete', todolist, :class => 'btn btn-large btn-danger', method: :delete, data: { confirm: 'Are you sure?' }) %>
             </p>
